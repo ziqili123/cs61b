@@ -37,7 +37,6 @@ public class Planet{
 		double r = calcDistance(p);
 		double force = calcForceExertedBy(p);
 		double dx = this.xxPos - p.xxPos;
-		
 		double forcex = -(force*dx)/r;
 
 		return forcex;
@@ -45,10 +44,10 @@ public class Planet{
 	public double calcForceExertedByY(Planet p){
 		double r = calcDistance(p);
 		double force = calcForceExertedBy(p);
-
 		double dy = this.yyPos - p.yyPos;
 		double forcey = -(force*dy)/r;
 		return forcey;
 	}
+	//12.21 start agian
 
 }
