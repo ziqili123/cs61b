@@ -48,8 +48,5 @@ public class Planet{
 		double forcey = -(force*dy)/r;
 		return forcey;
 	}
-	//12.21 start agian
-	//12.29 really start agian
-	//12.29 try again
-	//12.30
+	//1.7really restart it agian
 }
