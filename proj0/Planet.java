@@ -79,4 +79,7 @@ public class Planet{
 
 	}
 	//1.7really restart it agian
+	public void draw(){
+		StdDraw.picture(xxPos, yyPos, "images/" + imgFileName);
+	}
 }
