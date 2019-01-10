@@ -48,5 +48,25 @@ public class Planet{
 		double forcey = -(force*dy)/r;
 		return forcey;
 	}
+	public double calcNetForceExertedByX(Planet[] ps){
+		double netForceX = 0;
+		for (Planet p : ps){
+			if (!this.equals(p)){
+				netForceX += this.calcForceExertedByX(p);
+			}
+
+		}
+		return netForceX;
+	}
+	public double calcNetForceExertedByY(Planet[] ps){
+		double netForceY = 0;
+		for(Planet p : ps){
+			if(!this.equals(p)){
+				netForceY +=this.calcForceExertedByY(p);
+
+			}
+		}
+		return netForceY;
+	}
 	//1.7really restart it agian
 }
