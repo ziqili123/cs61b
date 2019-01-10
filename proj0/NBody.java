@@ -39,6 +39,30 @@ public class NBody{
 		for(Planet p : allPlanets){
 			p.draw();
 		}
-	}
 
+		StdDraw.enableDoubleBuffering();
+		double timeinterval = 0;
+		while(timeinterval < T){
+			double xForces[] = new double [allPlanets.length];
+			double yForces[] = new double [allPlanets.length];
+			for(int i=0;i<allPlanets.length; i++){
+				double xForce = allPlanets[i].calcNetForceExertedByX(allPlanets);
+				double yForce = allPlanets[i].calcNetForceExertedByY(allPlanets);
+				xForces[i] = xForce;
+				yForces[i] = yForce;
+			}
+			for(int i=0;i<allPlanets.length;i++){
+				allPlanets[i].update(dt , xForces[i], yForces[i] );
+
+				
+			}
+			StdDraw.picture(0, 0, "images/starfield.jpg");
+			for (Planet p: allPlanets){
+				p.draw();
+			}
+			StdDraw.show();
+			StdDraw.pause(10);
+			timeinterval +=dt;
+		}
+	}
 }
