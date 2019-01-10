@@ -1,10 +1,10 @@
 public class Planet{
-	public double xxPos = 1.0;
-	public double yyPos = 2.0;
-	public double xxVel = 3.0;
-	public double yyVel = 4.0;
-	public double mass = 5.0;
-	public String imgFileName = "jupiter.gif";
+	public double xxPos ;
+	public double yyPos ;
+	public double xxVel ;
+	public double yyVel ;
+	public double mass ;
+	public String imgFileName ;
 	public Planet(double xP, double yP, double xV, double yV, double m, String img){
 		xxPos = xP;
 		yyPos = yP;
@@ -67,6 +67,16 @@ public class Planet{
 			}
 		}
 		return netForceY;
+	}
+	public void update(double dt, double fX, double fY){
+		double accelerationX = fX /this.mass;
+		double accelerationY = fY /this.mass;
+		this. xxVel = this. xxVel+ accelerationX*dt;
+		this. yyVel = this. yyVel + accelerationY*dt;
+		this.xxPos = this.xxVel*dt + this.xxPos;
+		this.yyPos = this.yyVel*dt + this.yyPos;
+
+
 	}
 	//1.7really restart it agian
 }
