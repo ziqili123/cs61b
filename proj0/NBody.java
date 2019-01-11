@@ -70,7 +70,7 @@ public class NBody{
 			timeinterval +=dt;
 		}
 		StdOut.printf("%d\n", allPlanets.length);
-		StdOut.printf("%.2e\n, univradius");
+		StdOut.printf("%.2e\n", univradius);
 		for(int i = 0; i < allPlanets.length; i++){
 		StdOut.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s\n",
 allPlanets[i].xxPos, allPlanets[i].yyPos, allPlanets[i].xxVel,
