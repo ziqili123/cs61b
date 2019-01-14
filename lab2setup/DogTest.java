@@ -6,8 +6,7 @@ public class DogTest {
     public void testSmall() {
         Dog d = new Dog(3);
         assertEquals("yip", d.noise());
-    }
-
+    }///
     @Test
     public void testLarge() {
         Dog d = new Dog(20);
