@@ -146,6 +146,12 @@ public class IntList {
      * as THIS. Cannot handle IntLists with cycles. You are not expected to
      * read or understand this method.
      */
+    public IntList catenate(IntList A, IntList B){
+        while (B.rest != null){
+            A = A.rest;
+            A.first =
+        }
+    }
     public boolean equals(Object x) {
         if (!(x instanceof IntList)) {
             return false;
