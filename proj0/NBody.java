@@ -17,6 +17,7 @@ public class NBody{
 
 		for(int i=0; i< numPlanets;i++){
 			double xxPos = fileread.readDouble();
+			// the first time I use NIntelliJ
 			double yyPos = fileread.readDouble();
 			double xxVel = fileread.readDouble();
 			double yyVel = fileread.readDouble();
