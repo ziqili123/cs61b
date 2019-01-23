@@ -80,7 +80,7 @@ public class LinkedListDeque<Generic> {
 
         }
     }
-    public Generic getRecursive(int seq){
+   /* public Generic getRecursive(int seq){
 
          IntNode p = sentinel.next;
 
@@ -88,12 +88,11 @@ public class LinkedListDeque<Generic> {
             return p.next.item;
         }
         else{
-            IntNode t = p.next;
-            seq -=1;
-            t.getRecursive(seq);
+      //      p = p.next;
+           return p.next.getRecursive(seq-=1);
     }
 
-    }
+    }*/
 
     public int size(){
         return size;
@@ -128,7 +127,7 @@ public class LinkedListDeque<Generic> {
         y.addFirst("ts");
         y.addFirst("st");
         y.printDeque();
-        System.out.println(y.getRecursive(2));
+       // System.out.println(y.getRecursive(3));
 
 
     }
