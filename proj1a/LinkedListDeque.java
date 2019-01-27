@@ -1,10 +1,10 @@
 
-public class LinkedListDeque<Generic> {
+public class LinkedListDeque<T> {
     public class IntNode{
-            public Generic item;
+            public T item;
             public IntNode next;
             public IntNode prev;
-            public IntNode(IntNode t, Generic i, IntNode n){
+            public IntNode(IntNode t, T i, IntNode n){
                 prev = t;
                 item = i;
                 next = n;
@@ -20,7 +20,7 @@ public class LinkedListDeque<Generic> {
         sentinel.prev = sentinel;
         size = 0;
     }
-    public LinkedListDeque(Generic x){
+    public LinkedListDeque(T x){
         sentinel = new IntNode(null, x ,null);
         lastEle = sentinel;
         sentinel.next = sentinel;
@@ -29,7 +29,7 @@ public class LinkedListDeque<Generic> {
 
     }
 
-    public void addFirst(Generic x ){
+    public void addFirst(T x ){
 
         sentinel.next = new IntNode(sentinel, x, sentinel.next);
         sentinel.next.next.prev = sentinel.next;
@@ -40,8 +40,8 @@ public class LinkedListDeque<Generic> {
 
         size +=1;
     }
-    public Generic removeFirst(){
-        Generic c;
+    public T removeFirst(){
+       T c;
         c = sentinel.next.item;
 
         sentinel.next = sentinel.next.next;
@@ -66,7 +66,7 @@ public class LinkedListDeque<Generic> {
         }
     }
 
-    public Generic get(int seq) {
+    public T get(int seq) {
         int num = seq;
 
         IntNode p = sentinel.next;
@@ -81,7 +81,7 @@ public class LinkedListDeque<Generic> {
 
         }
     }
-    public Generic getRecursive(int seq){
+    public T getRecursive(int seq){
 
        /*  IntNode p = sentinel.next;
 
@@ -92,7 +92,7 @@ public class LinkedListDeque<Generic> {
       //      p = p.next;
            return p.next.getRecursive(seq-=1);
     }*/
-       Generic c;
+       T c;
        c = sentinel.next.item;
 
         return c;
@@ -101,7 +101,7 @@ public class LinkedListDeque<Generic> {
     public int size(){
         return size;
     }
-    public void addLast(Generic x){
+    public void addLast(T x){
   /*   IntNode p = sentinel;
      while(p.next != sentinel){
          p = p.next;
@@ -113,12 +113,12 @@ public class LinkedListDeque<Generic> {
      lastEle = lastEle.next;
 
 }
-    public Generic getLast(){
+    public T getLast(){
 
         return lastEle.item;
     }
-    public Generic removeLast(){
-        Generic c;
+    public T removeLast(){
+       T c;
         c = lastEle.item;
         lastEle.prev.next = sentinel;
         lastEle = lastEle.prev;
