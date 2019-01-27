@@ -101,7 +101,7 @@ public class LinkedListDeque<T> {
     public int size(){
         return size;
     }
-    private void addLast(T x){
+    public void addLast(T x){
   /*   IntNode p = sentinel;
      while(p.next != sentinel){
          p = p.next;
