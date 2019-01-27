@@ -82,6 +82,15 @@ public class ArrayDeque<Item> {
     public int size(){
         return size;
     }
+    public boolean isEmpty(){
+        if( size == 0){
+            return true;
+
+        }
+        else{
+            return false;
+        }
+    }
 
    /* public static void main(String[] args){
         ArrayDeque<Integer> newList = new ArrayDeque<Integer>();

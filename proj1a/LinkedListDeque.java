@@ -32,7 +32,7 @@ public class LinkedListDeque<Generic> {
     public void addFirst(Generic x ){
         sentinel.next = new IntNode(sentinel, x, sentinel.next);
         sentinel.next.next.prev = sentinel.next;
-       if(size ==0){
+       if(size == 0){
            lastEle = lastEle.next;
        }
 
@@ -43,7 +43,7 @@ public class LinkedListDeque<Generic> {
 
         sentinel.next = sentinel.next.next;
         sentinel.next.prev = sentinel;
-        size-=1;
+        size -= 1;
 
     }
     public boolean isEmpty(){
@@ -56,9 +56,9 @@ public class LinkedListDeque<Generic> {
         }
     }
     public void printDeque(){
-        IntNode p =sentinel.next;
+        IntNode p = sentinel.next;
         for( int i = 0; i< this.size(); i++){
-            System.out.println(p.item+" ");
+            System.out.println(p.item + " ");
             p = p.next;
         }
     }
