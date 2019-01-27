@@ -30,21 +30,24 @@ public class LinkedListDeque<Generic> {
     }
 
     public void addFirst(Generic x ){
+
         sentinel.next = new IntNode(sentinel, x, sentinel.next);
         sentinel.next.next.prev = sentinel.next;
-       if(size ==0){
+       if(size == 0){
            lastEle = lastEle.next;
        }
 
 
         size +=1;
     }
-    public void removeFirst(){
+    public Generic removeFirst(){
+        Generic c;
+        c = sentinel.next.item;
 
         sentinel.next = sentinel.next.next;
         sentinel.next.prev = sentinel;
-        size-=1;
-
+        size -= 1;
+        return c;
     }
     public boolean isEmpty(){
         if( size == 0){
@@ -56,9 +59,9 @@ public class LinkedListDeque<Generic> {
         }
     }
     public void printDeque(){
-        IntNode p =sentinel.next;
+        IntNode p = sentinel.next;
         for( int i = 0; i< this.size(); i++){
-            System.out.println(p.item+" ");
+            System.out.println(p.item + " ");
             p = p.next;
         }
     }
@@ -78,9 +81,9 @@ public class LinkedListDeque<Generic> {
 
         }
     }
-   /* public Generic getRecursive(int seq){
+    public Generic getRecursive(int seq){
 
-         IntNode p = sentinel.next;
+       /*  IntNode p = sentinel.next;
 
         if(seq ==0){
             return p.next.item;
@@ -88,9 +91,12 @@ public class LinkedListDeque<Generic> {
         else{
       //      p = p.next;
            return p.next.getRecursive(seq-=1);
-    }
-
     }*/
+       Generic c;
+       c = sentinel.next.item;
+
+        return c;
+    }
 
     public int size(){
         return size;
@@ -111,12 +117,13 @@ public class LinkedListDeque<Generic> {
 
         return lastEle.item;
     }
-    public void removeLast(){
-
-    lastEle.prev.next = sentinel;
-    lastEle = lastEle.prev;
-    size -=1;
-
+    public Generic removeLast(){
+        Generic c;
+        c = lastEle.item;
+        lastEle.prev.next = sentinel;
+        lastEle = lastEle.prev;
+        size -=1;
+        return c;
     }
  /*   public static void main(String[] args){
         LinkedListDeque y= new LinkedListDeque();
