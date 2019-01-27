@@ -17,7 +17,7 @@ public class ArrayDeque<T> {
 
 
     }*/
-   public void resize(int size){
+   private void resize(int size){
        T firstlist[];
       T b[];
        firstlist = (T[]) new Object[size + 1];
@@ -96,13 +96,18 @@ public class ArrayDeque<T> {
     public int size(){
         return size;
     }
+    public void printDeque(){
+       for(int i = 0; i < size; i ++){
+           System.out.println(newList[i]);
+       }
+    }
     public boolean isEmpty(){
         if ( size == 0){
-            return false;
+            return true;
 
         }
         else {
-            return true;
+            return false;
         }
     }
 

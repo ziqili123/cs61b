@@ -20,14 +20,14 @@ public class LinkedListDeque<T> {
         sentinel.prev = sentinel;
         size = 0;
     }
-    public LinkedListDeque(T x){
+  /*  public LinkedListDeque(T x){
         sentinel = new IntNode(null, x ,null);
         lastEle = sentinel;
         sentinel.next = sentinel;
         sentinel.prev = sentinel;
         size = 0;
 
-    }
+    }*/
 
     public void addFirst(T x ){
 
@@ -101,7 +101,7 @@ public class LinkedListDeque<T> {
     public int size(){
         return size;
     }
-    public void addLast(T x){
+    private void addLast(T x){
   /*   IntNode p = sentinel;
      while(p.next != sentinel){
          p = p.next;
