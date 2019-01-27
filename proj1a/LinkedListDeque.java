@@ -1,4 +1,3 @@
-import java.util.LinkedList;
 
 public class LinkedListDeque<Generic> {
     public class IntNode{
@@ -14,7 +13,7 @@ public class LinkedListDeque<Generic> {
     private IntNode sentinel;
     private int size;
     private IntNode lastEle;
-    public LinkedListDeque(){
+    public LinkedListDeque () {
         sentinel = new IntNode(null, null, null);
         lastEle = sentinel;
         sentinel.next = sentinel;
@@ -30,15 +29,14 @@ public class LinkedListDeque<Generic> {
 
     }
 
-   /* public LinkedListDeque(int x){
-       sentinel = new IntNode(63, null);
-       sentinel.next.next.next = sentinel;
-       size =1 ;
-       sentinel.next = new IntNode(x, sentinel.next);
-    }
-*/
     public void addFirst(Generic x ){
-        sentinel.next = new IntNode(sentinel.next.prev, x, sentinel.next);
+        sentinel.next = new IntNode(sentinel, x, sentinel.next);
+        sentinel.next.next.prev = sentinel.next;
+       if(size ==0){
+           lastEle = lastEle.next;
+       }
+
+
         size +=1;
     }
     public void removeFirst(){
@@ -122,12 +120,14 @@ public class LinkedListDeque<Generic> {
     }
     public static void main(String[] args){
         LinkedListDeque y= new LinkedListDeque();
-        y.addFirst("tst");
+
         y.addFirst("tt");
         y.addFirst("ts");
         y.addFirst("st");
-        y.printDeque();
-       // System.out.println(y.getRecursive(3));
+        y.addLast("sq");
+        y.removeFirst();
+        y.removeLast();
+
 
 
     }
