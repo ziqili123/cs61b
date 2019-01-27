@@ -83,7 +83,7 @@ public class ArrayDeque<Item> {
         return size;
     }
 
-    public static void main(String[] args){
+   /* public static void main(String[] args){
         ArrayDeque<Integer> newList = new ArrayDeque<Integer>();
         newList.addLast(2);
         newList.addFirst(1);
@@ -97,11 +97,11 @@ public class ArrayDeque<Item> {
         newList.addLast(3);
         newList.addFirst(4);
       /*  System.out.println(newList.size);
-        System.out.println(newList.get(1));*/
+        System.out.println(newList.get(1));
 
         newList.removeLast();
 
 
-    }
+    }*/
 
 }

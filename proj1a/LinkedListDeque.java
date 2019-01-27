@@ -118,7 +118,7 @@ public class LinkedListDeque<Generic> {
     size -=1;
 
     }
-    public static void main(String[] args){
+ /*   public static void main(String[] args){
         LinkedListDeque y= new LinkedListDeque();
 
         y.addFirst("tt");
@@ -130,5 +130,5 @@ public class LinkedListDeque<Generic> {
 
 
 
-    }
+    }*/
 }
