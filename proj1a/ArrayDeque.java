@@ -1,13 +1,13 @@
 public class ArrayDeque<Item> {
-    private int size ;
+    private int size;
     private int first;
     private int last;
     private int step;
-    private Item newList[];
-    public ArrayDeque(){
+    private Item newList [];
+    public ArrayDeque (){
 
         newList = (Item[]) new Object[8];
-        size =0;
+        size = 0;
         first = 7;
         last = 0;
         step = 0;
@@ -20,74 +20,80 @@ public class ArrayDeque<Item> {
    public void resize(int size){
        Item firstlist[];
        Item b[];
-       firstlist = (Item[]) new Object[size+1];
-       b = (Item[]) new Object[size-last];
-       System.arraycopy(newList,last,b,0,size-last);
+       firstlist = (Item[]) new Object[size + 1];
+       b = (Item[]) new Object[size - last];
+       System.arraycopy(newList,last,b,0,size - last);
        System.arraycopy(newList,0,firstlist,0,last);
-       System.arraycopy(b,0,firstlist,first+2, size - last);
+       System.arraycopy(b,0,firstlist,first + 2, size - last);
        newList = firstlist;
 
    }
     public void addLast(Item x){
-       if(step>7 ){
+       if(step > 7 ){
            resize(size);
            newList[last] = x;
-           last +=1;
-           first +=1;
+           last += 1;
+           first += 1;
        }
        else {
            newList[last] = x;
-           last +=1;
+           last += 1;
 
         }
-       size +=1;
-       step +=1;
+       size += 1;
+       step += 1;
     }
     public void addFirst(Item x){
-        if(step >7){
+        if(step > 7){
            resize(size);
            newList[last] = x;
 
         }
         else{
-            newList[first]=x;
-            first -=1;
+            newList[first] = x;
+            first -= 1;
         }
-        size+=1;
-        step+=1;
+        size += 1;
+        step += 1;
     }
-    public void removeLast(){
-        newList[last-1] =null;
-        last -=1 ;
+    public Item removeLast(){
+        Item c;
+        c = newList[last-1];
+        newList[last - 1] = null;
+        last -= 1 ;
         size -= 1;
-        step -=1;
+        step -= 1;
+        return c;
 
     }
-    public void removeFirst(){
+    public Item removeFirst(){
         /*Item b [];
         b = (Item[]) new Object[8];
         System.arraycopy(newList,0,b,0,size-1);
          newList = b;*/
-        newList[first+1]=null;
-        first+=1;
-        size-=1;
-        step -=1;
+        Item c;
+        c = newList[first+1];
+        newList[first + 1] = null;
+        first += 1;
+        size -= 1;
+        step -= 1;
+        return c;
 
     }
     public Item get(int x ){
         Item c;
-        c = newList[x-1];
+        c = newList[x - 1];
         return c;
     }
     public int size(){
         return size;
     }
     public boolean isEmpty(){
-        if( size == 0){
+        if ( size == 0){
             return true;
 
         }
-        else{
+        else {
             return false;
         }
     }
