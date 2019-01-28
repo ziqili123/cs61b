@@ -3,8 +3,8 @@ public class ArrayDeque<T> {
     private int first;
     private int last;
     private int step;
-    private T newList [];
-    public ArrayDeque (){
+    private T newList[];
+    public ArrayDeque() {
 
         newList = (T[]) new Object[8];
         size = 0;
@@ -17,68 +17,67 @@ public class ArrayDeque<T> {
 
 
     }*/
-   private void resize(int size){
-       T firstlist[];
-      T b[];
-       firstlist = (T[]) new Object[size + 1];
-       b = (T[]) new Object[size - last];
-       System.arraycopy(newList,last,b,0,size - last);
-       System.arraycopy(newList,0,firstlist,0,last);
-       System.arraycopy(b,0,firstlist,first + 2, size - last);
-       newList = firstlist;
+    private void resize(int size) {
+        T firstlist[];
+        T b[];
+        firstlist = (T[]) new Object[size + 1];
+        b = (T[]) new Object[size - last];
+        System.arraycopy(newList, last, b, 0, size - last);
+        System.arraycopy(newList, 0, firstlist, 0, last);
+        System.arraycopy(b, 0, firstlist, first + 2, size - last);
+        newList = firstlist;
 
-   }
-    public void addLast(T x){
-       if(step > 7 ){
-           resize(size);
-           newList[last] = x;
-           last += 1;
-           first += 1;
-       }
-       else {
-           newList[last] = x;
-           last += 1;
-
-        }
-       size += 1;
-       step += 1;
     }
-    public void addFirst(T x){
-        if(step > 7){
-           resize(size);
-           newList[last] = x;
+    public void addLast(T x) {
+        if (step > 7) {
+            resize(size);
+            newList[last] = x;
+            last += 1;
+            first += 1;
+        } else {
+            newList[last] = x;
+            last += 1;
 
         }
-        else{
+        size += 1;
+        step += 1;
+    }
+    public void addFirst(T x) {
+        if (step > 7) {
+            resize(size);
+            newList[last] = x;
+
+        } else {
+
             newList[first] = x;
             first -= 1;
         }
         size += 1;
         step += 1;
     }
-    public T removeLast(){
-       if(size ==0){
-           return newList[0];
-       }
-       else {
-           T c;
-           c = newList[last - 1];
-           newList[last - 1] = null;
-           last -= 1;
-           size -= 1;
-           step -= 1;
-           return c;
-       }
+    public T removeLast() {
+        if (size == 0) {
+            return newList[0];
+        } else {
+
+            T c;
+            c = newList[last - 1];
+            newList[last - 1] = null;
+            last -= 1;
+            size -= 1;
+            step -= 1;
+            return c;
+        }
     }
-    public T removeFirst(){
+    public T removeFirst() {
         /*Item b [];
         b = (Item[]) new Object[8];
         System.arraycopy(newList,0,b,0,size-1);
          newList = b;*/
-        if(size == 0 ){
+        if (size == 0) {
             return newList[0];
-        }
-        else {
+        } else {
+
             T c;
             c = newList[first + 1];
             newList[first + 1] = null;
@@ -88,25 +87,25 @@ public class ArrayDeque<T> {
             return c;
         }
     }
-    public T get(int x ){
+    public T get(int x) {
         T c;
         c = newList[x - 1];
         return c;
     }
-    public int size(){
+    public int size() {
         return size;
     }
-    public void printDeque(){
-       for(int i = 0; i < size; i ++){
-           System.out.println(newList[i]);
-       }
+    public void printDeque() {
+        for (int i = 0; i < size; i++) {
+            System.out.println(newList[i]);
+        }
     }
-    public boolean isEmpty(){
-        if ( size == 0){
+    public boolean isEmpty() {
+        if (size == 0) {
             return true;
 
-        }
-        else {
+        } else {
+
             return false;
         }
     }
