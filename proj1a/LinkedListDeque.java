@@ -1,6 +1,6 @@
 
 public class LinkedListDeque<T> {
-    public class IntNode {
+    private class IntNode {
         public T item;
         public IntNode next;
         public IntNode prev;
@@ -36,18 +36,20 @@ public class LinkedListDeque<T> {
         if (size == 0) {
             lastEle = lastEle.next;
         }
-
-
         size += 1;
     }
     public T removeFirst() {
-        T c;
-        c = sentinel.next.item;
+        if (size == 0) {
+            return sentinel.item;
+        } else {
+            T c;
+            c = sentinel.next.item;
+            sentinel.next = sentinel.next.next;
+            sentinel.next.prev = sentinel;
+            size -= 1;
+            return c;
+        }
 
-        sentinel.next = sentinel.next.next;
-        sentinel.next.prev = sentinel;
-        size -= 1;
-        return c;
     }
     public boolean isEmpty() {
         if (size == 0) {
@@ -116,12 +118,17 @@ public class LinkedListDeque<T> {
         return lastEle.item;
     }
     public T removeLast() {
-        T c;
-        c = lastEle.item;
-        lastEle.prev.next = sentinel;
-        lastEle = lastEle.prev;
-        size -= 1;
-        return c;
+        if (size == 0) {
+            return sentinel.item;
+        } else {
+            T c;
+            c = lastEle.item;
+            lastEle.prev.next = sentinel;
+            lastEle = lastEle.prev;
+            size -= 1;
+            return c;
+        }
+
     }
  /*   public static void main(String[] args){
         LinkedListDeque y= new LinkedListDeque();
