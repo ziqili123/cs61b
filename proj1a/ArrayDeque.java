@@ -17,6 +17,16 @@ public class ArrayDeque<T> {
 
 
     }*/
+    private int first (int last) {
+        if (last  > 1){
+            first = last - 2;
+        } else if (last == 1) {
+            first = size;
+        } else if (last == 0) {
+            first = size -1;
+        }
+        return first;
+    }
     private void resize(int size) {
         T firstlist[];
         T b[];
@@ -33,7 +43,6 @@ public class ArrayDeque<T> {
             resize(size);
             newList[last] = x;
             last += 1;
-            first += 1;
         } else {
             newList[last] = x;
             last += 1;
@@ -41,6 +50,7 @@ public class ArrayDeque<T> {
         }
         size += 1;
         step += 1;
+        first = first (last);
     }
     public void addFirst(T x) {
         if (step > 7) {
@@ -50,7 +60,7 @@ public class ArrayDeque<T> {
         } else {
 
             newList[first] = x;
-            first -= 1;
+
         }
         size += 1;
         step += 1;
@@ -61,8 +71,9 @@ public class ArrayDeque<T> {
         } else {
 
             T c;
-            c = newList[last - 1];
-            newList[last - 1] = null;
+            c = newList[last];
+            newList[last] = null;
+
             last -= 1;
             size -= 1;
             step -= 1;
@@ -110,9 +121,9 @@ public class ArrayDeque<T> {
         }
     }
 
-   /* public static void main(String[] args){
+   public static void main(String[] args){
         ArrayDeque<Integer> newList = new ArrayDeque<Integer>();
-        newList.addLast(2);
+       /* newList.addLast(2);
         newList.addFirst(1);
         newList.addLast(2);
         newList.addLast(2);
@@ -123,12 +134,20 @@ public class ArrayDeque<T> {
         newList.addFirst(1);
         newList.addLast(3);
         newList.addFirst(4);
-      /*  System.out.println(newList.size);
-        System.out.println(newList.get(1));
+        System.out.println(newList.size);
+        System.out.println(newList.get(8));*/
+       newList.addFirst(1);
+       newList.addFirst(1);
+       newList.addFirst(1);
+       newList.addFirst(1);
+       newList.addFirst(1);
+       newList.addFirst(1);
+       newList.addFirst(1);
+       newList.addFirst(1);
 
         newList.removeLast();
 
 
-    }*/
+   }
 
 }
