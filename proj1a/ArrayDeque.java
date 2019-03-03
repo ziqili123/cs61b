@@ -3,7 +3,7 @@ public class ArrayDeque<T> {
     private int first;
     private int last;
     private int step;
-    private T newList[];
+    private T[] newList;
     public ArrayDeque() {
 
         newList = (T[]) new Object[8];
@@ -17,24 +17,24 @@ public class ArrayDeque<T> {
 
 
     }*/
-    private int first (int last) {
-        if (last  > 1){
-            first = last - 2;
-        } else if (last == 1) {
+    private int first(int lastA) {
+        if (lastA > 1) {
+            first = lastA - 2;
+        } else if (lastA == 1) {
             first = size;
-        } else if (last == 0) {
-            first = size -1;
+        } else if (lastA == 0) {
+            first = size - 1;
         }
         return first;
     }
-    private void resize(int size) {
-        T firstlist[];
-        T b[];
-        firstlist = (T[]) new Object[size + 1];
-        b = (T[]) new Object[size - last];
-        System.arraycopy(newList, last, b, 0, size - last);
+    private void resize(int sizeA) {
+        T[] firstlist;
+        T[] b;
+        firstlist = (T[]) new Object[sizeA + 1];
+        b = (T[]) new Object[sizeA - last];
+        System.arraycopy(newList, last, b, 0, sizeA - last);
         System.arraycopy(newList, 0, firstlist, 0, last);
-        System.arraycopy(b, 0, firstlist, first + 2, size - last);
+        System.arraycopy(b, 0, firstlist, first + 2, sizeA - last);
         newList = firstlist;
 
     }
@@ -50,7 +50,7 @@ public class ArrayDeque<T> {
         }
         size += 1;
         step += 1;
-        first = first (last);
+        first = first(last);
     }
     public void addFirst(T x) {
         if (step > 7) {
@@ -115,13 +115,13 @@ public class ArrayDeque<T> {
         if (size == 0) {
             return true;
 
-        } else {
-
-            return false;
         }
+
+        return false;
+
     }
 
-   public static void main(String[] args){
+    public static void main(String[] args) {
         ArrayDeque<Integer> newList = new ArrayDeque<Integer>();
        /* newList.addLast(2);
         newList.addFirst(1);
@@ -136,18 +136,18 @@ public class ArrayDeque<T> {
         newList.addFirst(4);
         System.out.println(newList.size);
         System.out.println(newList.get(8));*/
-       newList.addFirst(1);
-       newList.addFirst(1);
-       newList.addFirst(1);
-       newList.addFirst(1);
-       newList.addFirst(1);
-       newList.addFirst(1);
-       newList.addFirst(1);
-       newList.addFirst(1);
+        newList.addFirst(1);
+        newList.addFirst(1);
+        newList.addFirst(1);
+        newList.addFirst(1);
+        newList.addFirst(1);
+        newList.addFirst(1);
+        newList.addFirst(1);
+        newList.addFirst(1);
 
         newList.removeLast();
 
 
-   }
+    }
 
 }

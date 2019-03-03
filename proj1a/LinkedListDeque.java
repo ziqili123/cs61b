@@ -1,10 +1,10 @@
 
 public class LinkedListDeque<T> {
     private class IntNode {
-        public T item;
-        public IntNode next;
-        public IntNode prev;
-        public IntNode(IntNode t, T i, IntNode n) {
+        private T item;
+        private IntNode next;
+        private IntNode prev;
+        private IntNode(IntNode t, T i, IntNode n) {
             prev = t;
             item = i;
             next = n;
@@ -55,10 +55,10 @@ public class LinkedListDeque<T> {
         if (size == 0) {
             return true;
 
-        } else {
-
-            return false;
         }
+
+        return false;
+
     }
     public void printDeque() {
         IntNode p = sentinel.next;
