@@ -120,10 +120,10 @@ public class ArrayDeque<T> {
         return false;
 
     }
-
-    public static void main(String[] args) {
-        ArrayDeque<Integer> newList = new ArrayDeque<Integer>();
-       /* newList.addLast(2);
+//Self-test
+   /*private static void main(String[] args) {
+   /    ArrayDeque<Integer> newList = new ArrayDeque<Integer>();
+        newList.addLast(2);
         newList.addFirst(1);
         newList.addLast(2);
         newList.addLast(2);
@@ -135,7 +135,7 @@ public class ArrayDeque<T> {
         newList.addLast(3);
         newList.addFirst(4);
         System.out.println(newList.size);
-        System.out.println(newList.get(8));*/
+        System.out.println(newList.get(8));
         newList.addFirst(1);
         newList.addFirst(1);
         newList.addFirst(1);
@@ -149,5 +149,5 @@ public class ArrayDeque<T> {
 
 
     }
-
+*/
 }

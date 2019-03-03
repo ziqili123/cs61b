@@ -113,7 +113,7 @@ public class LinkedListDeque<T> {
         lastEle = lastEle.next;
 
     }
-    public T getLast() {
+    private T getLast() {
 
         return lastEle.item;
     }
