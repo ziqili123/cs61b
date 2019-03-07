@@ -20,14 +20,7 @@ public class LinkedListDeque<T> {
         sentinel.prev = sentinel;
         size = 0;
     }
-    public LinkedListDeque(T x) {
-        sentinel = new IntNode(null, null, null);
 
-        sentinel.next = new IntNode(sentinel, x, sentinel);
-        sentinel.prev = sentinel;
-        size = 1;
-
-    }
 
 
     public void addFirst(T x) {
@@ -98,7 +91,7 @@ public class LinkedListDeque<T> {
         return getRecur(seq, sentinel.next);
 
     }
-    public T getRecur(int num, IntNode curr) {
+    private T getRecur(int num, IntNode curr) {
         if (num == 0) {
             return curr.item;
         }
