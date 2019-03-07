@@ -83,7 +83,7 @@ public class LinkedListDeque<T> {
         }
     }
     public T getRecursive(int seq) {
-        if(seq > size) {
+        if (seq > size) {
             return null;
         }
 

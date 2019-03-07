@@ -1,6 +1,6 @@
 public class ArrayDeque<T> {
     private int size;
-    private float usage;
+
     private int nextFirst;
     private int nextLast;
     private T[] items;
@@ -22,13 +22,13 @@ public class ArrayDeque<T> {
     // e.g. 0 - 1 % 8 = 7
     // then we know that the previous element should be put
     // at the end of the list
-    public int minusOne(int index) {
+    private int minusOne(int index) {
         return Math.floorMod(index - 1, items.length);
     }
-    public int plusOne(int index, int length) {
+    private int plusOne(int index, int length) {
         return Math.floorMod(index + 1, length);
     }
-    public int plusOne(int index) {
+    private int plusOne(int index) {
         return Math.floorMod(index + 1, items.length);
     }
     /** resize
@@ -70,12 +70,12 @@ public class ArrayDeque<T> {
 
     }
     public void addFirst(T item) {
-        resize();
+        //resize();
         items[nextFirst] = item;
         nextFirst = minusOne(nextFirst);
         size++;
     }
-    public T getFirst() {
+    private T getFirst() {
         return items[plusOne(nextFirst)];
     }
     public T removeFirst() {
@@ -93,13 +93,13 @@ public class ArrayDeque<T> {
         size++;
 
     }
-    public T getLast() {
+    private T getLast() {
         return items[minusOne(nextLast)];
 
     }
     public T removeLast() {
         resize();
-        T res = get(minusOne(nextLast));
+        T res = getLast();
         nextLast = minusOne(nextLast);
         items[nextLast] = null;
         size--;
@@ -119,7 +119,7 @@ public class ArrayDeque<T> {
         if (index < 0 || index >= size) {
             return null;
         }
-        index = Math.floorMod(nextFirst + index, items.length);
+        index = Math.floorMod(plusOne(nextFirst) + index, items.length);
         return items[index];
     }
 
