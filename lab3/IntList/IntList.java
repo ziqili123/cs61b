@@ -150,6 +150,23 @@ public class IntList {
         }
         return result;
     }
+    public static IntList reverse(IntList A) {
+        if (A == null) {
+            return null;
+        }
+        IntList result = new IntList(A.first, null);
+        while(A.rest != null) {
+            IntList p = A.rest;
+            IntList temp = new IntList(p.first, result);
+            result = temp;
+            A = A.rest;
+        }
+
+        return result;
+
+
+
+    }
 
     /**
      * Returns true iff X is an IntList containing the same sequence of ints
