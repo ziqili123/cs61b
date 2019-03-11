@@ -2,7 +2,7 @@ public class OffByN implements CharacterComparator {
 
 
 
-    int N;
+    private int N;
     public OffByN(int N) {
         this.N = N;
     }
@@ -16,7 +16,7 @@ public class OffByN implements CharacterComparator {
         }
         return false;
     }
-    }
+}
 
 
 
