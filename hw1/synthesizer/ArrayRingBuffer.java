@@ -98,11 +98,11 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     }
 
 
-    private class BufferIterator implements Iterator<T>{
+    private class BufferIterator implements Iterator<T> {
         int ptr = 0;
         @Override
         public boolean hasNext() {
-            return ptr == fillCount();
+            return ptr != fillCount();
         }
         @Override
         public T next() {
@@ -110,10 +110,6 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
             ptr++;
             return next;
         }
-
-
-
-
     }
 
     // TODO: When you get to part 5, implement the needed code to support iteration.
