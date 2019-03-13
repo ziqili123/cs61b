@@ -7,7 +7,7 @@ public interface BoundedQueue <T> {
     T dequeue();        // delete and return item from the front
     T peek();
     default boolean isEmpty() {
-        if (this.fillCount() == 0) {
+        if (fillCount() == 0) {
             return true;
         }
         return false;
