@@ -61,10 +61,10 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
         T returnValue = rb[first];
         if (!isEmpty()) {
             rb[first] = null;
-            if (first == 0) {
-                first = capacity - 1;
+            if (first == capacity - 1) {
+                first = 0;
             } else {
-                first--;
+                first++;
             }
             fillCount--;
 
@@ -79,6 +79,9 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
      */
     public T peek() {
         // TODO: Return the first item. None of your instance variables should change.
+        if (fillCount == 0) {
+            return null;
+        }
         return rb[first];
     }
 
