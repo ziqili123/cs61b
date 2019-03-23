@@ -75,7 +75,7 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
       * Or if p is null, it returns a one node BSTMap containing (KEY, VALUE).
      */
     private Node putHelper(K key, V value, Node p) {
-            Node node = new Node(key, value);
+        Node node = new Node(key, value);
         if (p == null) {
 
             size += 1;
@@ -104,12 +104,12 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
 
         root = putHelper(key, value, root);
 
-}
+    }
 
     /* Returns the number of key-value mappings in this map. */
     @Override
     public int size() {
-       return size;
+        return size;
     }
 
     //////////////// EVERYTHING BELOW THIS LINE IS OPTIONAL ////////////////
