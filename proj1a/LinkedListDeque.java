@@ -1,10 +1,10 @@
 
 public class LinkedListDeque<T> {
     private class IntNode {
-        public T item;
-        public IntNode next;
-        public IntNode prev;
-        public IntNode(IntNode t, T i, IntNode n) {
+        private T item;
+        private IntNode next;
+        private IntNode prev;
+        private IntNode(IntNode t, T i, IntNode n) {
             prev = t;
             item = i;
             next = n;
@@ -12,122 +12,108 @@ public class LinkedListDeque<T> {
     }
     private IntNode sentinel;
     private int size;
-    private IntNode lastEle;
+
     public LinkedListDeque() {
         sentinel = new IntNode(null, null, null);
-        lastEle = sentinel;
+
         sentinel.next = sentinel;
         sentinel.prev = sentinel;
         size = 0;
     }
-  /*  public LinkedListDeque(T x){
-        sentinel = new IntNode(null, x ,null);
-        lastEle = sentinel;
-        sentinel.next = sentinel;
-        sentinel.prev = sentinel;
-        size = 0;
 
-    }*/
+
 
     public void addFirst(T x) {
 
         sentinel.next = new IntNode(sentinel, x, sentinel.next);
         sentinel.next.next.prev = sentinel.next;
-        if (size == 0) {
-            lastEle = lastEle.next;
-        }
         size += 1;
     }
+
+    public void addLast(T x) {
+        sentinel.prev = new IntNode(sentinel.prev, x, sentinel);
+        sentinel.prev.prev.next = sentinel.prev;
+        size += 1;
+    }
+
+
+
+
     public T removeFirst() {
         if (size == 0) {
-            return sentinel.item;
-        } else {
-            T c;
-            c = sentinel.next.item;
-            sentinel.next = sentinel.next.next;
-            sentinel.next.prev = sentinel;
-            size -= 1;
-            return c;
+            return null;
         }
-
+        size -= 1;
+        T res = sentinel.next.item;
+        sentinel.next = sentinel.next.next;
+        sentinel.next.prev = sentinel;
+        return res;
     }
+
+
+
     public boolean isEmpty() {
         if (size == 0) {
             return true;
 
-        } else {
-
-            return false;
         }
+
+        return false;
+
     }
     public void printDeque() {
-        IntNode p = sentinel.next;
-        for (int i = 0; i < this.size(); i++) {
-            System.out.println(p.item + " ");
+        IntNode p = sentinel;
+        while (p.next != sentinel) {
             p = p.next;
+            System.out.print(p.item);
+            System.out.print(" ");
         }
+        System.out.println();
     }
 
-    public T get(int seq) {
-        int num = seq;
-        IntNode p = sentinel.next;
-        if (num == 0) {
-            return p.item;
-        } else {
-            for (int i = 0; i < num; i++) {
-                p = p.next;
-
+    public T get(int index) {
+        int count = 0;
+        IntNode p = sentinel;
+        while (p.next != sentinel) {
+            p = p.next;
+            if (count == index) {
+                return p.item;
             }
-            return p.item;
-
+            count++;
         }
+        return null;
     }
     public T getRecursive(int seq) {
-
-       /*  IntNode p = sentinel.next;
-
-        if(seq ==0){
-            return p.next.item;
+        if (seq > size) {
+            return null;
         }
-        else{
-      //      p = p.next;
-           return p.next.getRecursive(seq-=1);
-    }*/
-        T c;
-        c = sentinel.next.item;
 
-        return c;
+        return getRecur(seq, sentinel.next);
+
     }
+    private T getRecur(int num, IntNode curr) {
+        if (num == 0) {
+            return curr.item;
+        }
+        return getRecur(num - 1, curr.next);
+    }
+
+
 
     public int size() {
         return size;
     }
-    public void addLast(T x) {
-  /*   IntNode p = sentinel;
-     while(p.next != sentinel){
-         p = p.next;
-     }
-     p.next = new IntNode(x,p.next);*/
-        size += 1;
-        lastEle.next = new IntNode(lastEle, x, lastEle.next);
-        lastEle = lastEle.next;
 
-    }
-    public T getLast() {
 
-        return lastEle.item;
-    }
     public T removeLast() {
         if (size == 0) {
-            return sentinel.item;
-        } else {
-            T c;
-            c = lastEle.item;
-            lastEle.prev.next = sentinel;
-            lastEle = lastEle.prev;
-            size -= 1;
-            return c;
+            return null;
         }
+        size -= 1;
+        T res = sentinel.prev.item;
+        sentinel.prev.prev.next = sentinel;
+        sentinel.prev = sentinel.prev.prev;
+        return res;
 
     }
  /*   public static void main(String[] args){
