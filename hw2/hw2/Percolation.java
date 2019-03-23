@@ -14,7 +14,8 @@ public class Percolation {
         if (N <= 0) {
             throw new java.lang.IllegalArgumentException("N should not be smaller than 0.");
         }
-        // index N * N , the item connected with the first column, N * N + 1 the item connected with the last item;
+        // index N * N , the item connect
+        ed with the first column, N * N + 1 the item connected with the last item;
         for (int i = 0; i < N * N; i++) {
             matrix[i] = false;
         }
@@ -108,7 +109,7 @@ import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 public class Percolation {
     private int N;
     private boolean[][] grid;
-    private int OpenSitesNumber;
+    private int openSitesNumber;
     private WeightedQuickUnionUF unionSet;
     private WeightedQuickUnionUF unionSetNoBot;
     private int bottom;
@@ -126,7 +127,7 @@ public class Percolation {
             }
         }
 
-        OpenSitesNumber = 0;
+        openSitesNumber = 0;
         top = 0;
         bottom = N * N + 1;
         unionSet = new WeightedQuickUnionUF(N * N  + 2);
@@ -142,7 +143,7 @@ public class Percolation {
             return;
         }
         grid[row][col] = true;
-        OpenSitesNumber += 1;
+        openSitesNumber += 1;
 
         int coord = xyTo1D(row, col);
         if (coord <= N) {
@@ -178,7 +179,7 @@ public class Percolation {
     }
 
     public int numberOfOpenSites() {
-        return OpenSitesNumber;
+        return openSitesNumber;
     }
 
     public boolean percolates() {

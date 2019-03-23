@@ -3,22 +3,24 @@ package hw2;
 import edu.princeton.cs.introcs.StdRandom;
 import edu.princeton.cs.introcs.StdStats;
 public class PercolationStats {
-    double[] result;
+    private double[] result;
     public PercolationStats(int N, int T, PercolationFactory pf) {
-        result = new double[T];
+
         if (N <= 0 || T <= 0) {
             throw new IllegalArgumentException("they can not be zero.");
         }
+        result = new double[T];
         for (int i = 0; i < T; i++) {
+
             Percolation matrix = pf.make(N);
             while (!matrix.percolates()) {
                 int row = StdRandom.uniform(N);
                 int col = StdRandom.uniform(N);
-                matrix.open(row,col);
+                matrix.open(row, col);
             }
-            result[i] = matrix.numberOfOpenSites();
+            result[i] = matrix.numberOfOpenSites() / (N * N);
         }
-   }
+    }
     public double mean() {
         return StdStats.mean(result);
 
