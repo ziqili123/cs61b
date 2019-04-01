@@ -35,7 +35,14 @@ public class MergeSort {
     private static <Item extends Comparable> Queue<Queue<Item>>
             makeSingleItemQueues(Queue<Item> items) {
         // Your code here!
-        return null;
+        Queue<Queue<Item>> returnQueue = new Queue<>();
+        while(!items.isEmpty()) {
+            Queue<Item> temp = new Queue<>();
+            temp.enqueue(items.dequeue());
+            returnQueue.enqueue(temp);
+        }
+
+        return returnQueue;
     }
 
     /**
@@ -54,13 +61,47 @@ public class MergeSort {
     private static <Item extends Comparable> Queue<Item> mergeSortedQueues(
             Queue<Item> q1, Queue<Item> q2) {
         // Your code here!
-        return null;
+        Queue<Item> sortedQueue = new Queue<>();
+
+        while (!q1.isEmpty() && !q2.isEmpty()) {
+            sortedQueue.enqueue(getMin(q1,q2));
+        }
+        while (q1.isEmpty() && !q2.isEmpty()) {
+            sortedQueue.enqueue(q2.dequeue());
+        }
+        while (!q1.isEmpty() && q2.isEmpty()) {
+            sortedQueue.enqueue(q1.dequeue());
+        }
+
+        return sortedQueue;
     }
 
     /** Returns a Queue that contains the given items sorted from least to greatest. */
     public static <Item extends Comparable> Queue<Item> mergeSort(
             Queue<Item> items) {
-        // Your code here!
-        return items;
+
+        if (items == null || items.isEmpty()) {
+            return null;
+        }
+        Queue<Queue<Item>> newItems = makeSingleItemQueues(items);
+        while (newItems.size() != 1) {
+            Queue<Item> q1 = newItems.dequeue();
+            Queue<Item> q2 = newItems.dequeue();
+            newItems.enqueue(mergeSortedQueues(q1,q2));
+        }
+        return newItems.dequeue();
     }
+    public static void main(String[] args){
+        Queue<String> demo = new Queue<>();
+        demo.enqueue("BBBB");
+        demo.enqueue("AAAA");
+        demo.enqueue("CCCC");
+        Queue<String> result;
+        result = MergeSort.mergeSort(demo);
+        while (!result.isEmpty()) {
+            String x = result.dequeue();
+            System.out.println(x);
+        }
+    }
+
 }
