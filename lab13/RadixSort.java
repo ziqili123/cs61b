@@ -49,18 +49,18 @@ public class RadixSort {
         for (int r = 0; r < 256; r++) {
             count[r + 1] += count[r];
         }
+        int zeroIndi = 0;
         for (int i = 0; i < asciis.length; i++) {
             if (index > asciis[i].length() - 1) {
-                aux[count[0]++] = asciis[i];
+                aux[zeroIndi++] = asciis[i];
             } else {
-                aux[count[asciis[i].charAt(index)]++] = asciis[i];
+                aux[count[(int)asciis[i].charAt(index)]++] = asciis[i];
             }
 
         }
         for (int i = 0; i < asciis.length; i++) {
             asciis[i] = aux[i];
         }
-
 
 
     }
@@ -81,9 +81,9 @@ public class RadixSort {
     }
     public static void main(String[] args) {
         String[] result = new String[3];
-        result[0] = "nad";
-        result[1] = "casd";
-        result[2] = "dsd";
+        result[0] = "zaz";
+        result[1] = "aae";
+        result[2] = "baa";
         sort(result);
         for (String i : result) {
             System.out.println(i);
