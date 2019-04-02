@@ -82,8 +82,8 @@ public class RadixSort {
     public static void main(String[] args) {
         String[] result = new String[3];
         result[0] = "zaz";
-        result[1] = "aae";
-        result[2] = "baa";
+        result[1] = "aaj";
+        result[2] = "b";
         sort(result);
         for (String i : result) {
             System.out.println(i);
