@@ -38,7 +38,7 @@ public class CountingSort {
 
         // however, below is a more proper, generalized implementation of
         // counting sort that uses start position calculation
-        int[] starts = new int[max + 1];
+      /*  int[] starts = new int[max + 1];
         int pos = 0;
         for (int i = 0; i < starts.length; i += 1) {
             starts[i] = pos;
@@ -51,7 +51,7 @@ public class CountingSort {
             int place = starts[item];
             sorted2[place] = item;
             starts[item] += 1;
-        }
+        }*/
 
         // return the sorted array
         return sorted;
@@ -66,7 +66,50 @@ public class CountingSort {
      * @param arr int array that will be sorted
      */
     public static int[] betterCountingSort(int[] arr) {
-        // TODO make counting sort work with arrays containing negative numbers.
-        return null;
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        for (int i : arr) {
+            max = max > i ? max : i;
+        }
+        for (int i : arr) {
+            min = min < i ? min : i;
+        }
+        if (min < 0) {
+            int[] posList = new int[max + 1];
+            int[] negList = new int[-min + 1];
+            for (int i : arr) {
+                if (i >= 0) {
+                    posList[i]++;
+                } else {
+                    negList[-i]++;
+                }
+
+            }
+            int[] sortedArray = new int[arr.length];
+
+            int k = 0;
+            for (int i = negList.length - 1; i >= 0; i--) {
+                for (int j = 0; j < negList[i]; j += 1, k += 1) {
+                    sortedArray[k] = -i;
+                }
+            }
+
+            for (int m = 0; m < posList.length; m++) {
+                for (int n = 0; n < posList[m]; n++, k++) {
+                    sortedArray[k] = m;
+                }
+            }
+
+
+
+            return sortedArray;
+
+
+
+
+        } else {
+            return naiveCountingSort(arr);
+        }
+
     }
 }
